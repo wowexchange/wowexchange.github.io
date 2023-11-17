@@ -48,7 +48,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **请求数据类型**: `application/json`
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -127,7 +127,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **请求方式**: <code class="method_get" style="">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -210,7 +210,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **请求方式**: <code class="method_get" style="">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -267,7 +267,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **请求方式**: <code class="method_get" style="">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -326,29 +326,29 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **响应示例**:
 ```json
 {
-	"code": 0,
-	"msg": "",
-	"data": {
-		"s": "",
-		"i": "",
-		"dd": {
-			"o": "",
-			"h": "",
-			"l": "",
-			"c": "",
-			"h24": "",
-			"l24": "",
-			"v24": "",
-			"vv24": "",
-			"p24": "",
-			"cp": "",
-			"v": "",
-			"vv": "",
-			"pt": 0,
-			"sse": "",
-			"sos": ""
-		}
-	}
+    "code": 0,
+    "msg": "",
+    "data": {
+        "s": "",
+        "i": "",
+        "dd": {
+            "o": "",
+            "h": "",
+            "l": "",
+            "c": "",
+            "h24": "",
+            "l24": "",
+            "v24": "",
+            "vv24": "",
+            "p24": "",
+            "cp": "",
+            "v": "",
+            "vv": "",
+            "pt": 0,
+            "sse": "",
+            "sos": ""
+        }
+    }
 }
 ```
 
@@ -362,7 +362,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **请求方式**: <code class="method_get" style="">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -437,7 +437,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **请求方式**: <code class="method_get" style="">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -517,13 +517,13 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ## 8.分页获取进行中的订单列表
 
 
-**接口地址**:`/spot/open-api/v1/exchange/orders`
+**接口地址**: `/spot/open-api/v1/exchange/orders`
 
 
-**请求方式**:`GET`
+**请求方式**: <code class="method_get">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -584,36 +584,36 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **响应示例**:
 ```javascript
 {
-	"code": 0,
-	"msg": "",
-	"data": {
-		"count": 0,
-		"total": 0,
-		"page": 0,
-		"pageSize": 0,
-		"list": [
-			{
-				"orderId": "",
-				"memberId": 0,
-				"type": "",
-				"amount": 0,
-				"symbol": "",
-				"tradedAmount": 0,
-				"turnover": 0,
-				"coinSymbol": "",
-				"baseSymbol": "",
-				"status": "",
-				"direction": "",
-				"price": 0,
-				"time": 0,
-				"completedTime": 0,
-				"canceledTime": 0,
-				"useDiscount": "",
-				"detail": null,
-				"completed": true
-			}
-		]
-	}
+    "code": 0,
+    "msg": "",
+    "data": {
+        "count": 0,
+        "total": 0,
+        "page": 0,
+        "pageSize": 0,
+        "list": [
+            {
+                "orderId": "",
+                "memberId": 0,
+                "type": "",
+                "amount": 0,
+                "symbol": "",
+                "tradedAmount": 0,
+                "turnover": 0,
+                "coinSymbol": "",
+                "baseSymbol": "",
+                "status": "",
+                "direction": "",
+                "price": 0,
+                "time": 0,
+                "completedTime": 0,
+                "canceledTime": 0,
+                "useDiscount": "",
+                "detail": null,
+                "completed": true
+            }
+        ]
+    }
 }
 ```
 
@@ -621,13 +621,13 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ## 9.根据订单ID获取订单信息
 
 
-**接口地址**:`/spot/open-api/v1/exchange/order/{orderId}`
+**接口地址**: `/spot/open-api/v1/exchange/order/{orderId}`
 
 
-**请求方式**:`GET`
+**请求方式**: <code class="method_get">GET</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -688,38 +688,38 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **响应示例**:
 ```javascript
 {
-	"code": 0,
-	"msg": "",
-	"data": {
-		"orderId": "",
-		"memberId": 0,
-		"type": "",
-		"amount": 0,
-		"symbol": "",
-		"tradedAmount": 0,
-		"turnover": 0,
-		"coinSymbol": "",
-		"baseSymbol": "",
-		"status": "",
-		"direction": "",
-		"price": 0,
-		"time": 0,
-		"completedTime": 0,
-		"canceledTime": 0,
-		"useDiscount": "",
-		"detail": [
-			{
-				"id": 0,
-				"orderId": "",
-				"price": 0,
-				"amount": 0,
-				"turnover": 0,
-				"fee": 0,
-				"time": 0
-			}
-		],
-		"completed": true
-	}
+    "code": 0,
+    "msg": "",
+    "data": {
+        "orderId": "",
+        "memberId": 0,
+        "type": "",
+        "amount": 0,
+        "symbol": "",
+        "tradedAmount": 0,
+        "turnover": 0,
+        "coinSymbol": "",
+        "baseSymbol": "",
+        "status": "",
+        "direction": "",
+        "price": 0,
+        "time": 0,
+        "completedTime": 0,
+        "canceledTime": 0,
+        "useDiscount": "",
+        "detail": [
+            {
+                "id": 0,
+                "orderId": "",
+                "price": 0,
+                "amount": 0,
+                "turnover": 0,
+                "fee": 0,
+                "time": 0
+            }
+        ],
+        "completed": true
+    }
 }
 ```
 
@@ -727,13 +727,13 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ## 10.撤单
 
 
-**接口地址**:`/spot/open-api/v1/exchange/order/{orderId}`
+**接口地址**: `/spot/open-api/v1/exchange/order/{orderId}`
 
 
-**请求方式**:`DELETE`
+**请求方式**: <code class="method_delete">DELETE</code>
 
 
-**响应数据类型**: `application/json`
+**响应 Content-Type**: `application/json`
 
 
 **接口描述**:
@@ -769,8 +769,8 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **响应示例**:
 ```javascript
 {
-	"code": 0,
-	"msg": "",
-	"data": true
+    "code": 0,
+    "msg": "",
+    "data": true
 }
 ```
