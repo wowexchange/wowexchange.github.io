@@ -300,7 +300,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
-|code||integer(int32)|integer(int32)|
+|code||int|int|
 |msg||string||
 |data||KlineSubscribeData|KlineSubscribeData|
 |&emsp;&emsp;s|交易对|string||
@@ -507,5 +507,270 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
             }
         ]
     }
+}
+```
+
+
+
+
+
+## 8.分页获取进行中的订单列表
+
+
+**接口地址**:`/spot/open-api/v1/exchange/orders`
+
+
+**请求方式**:`GET`
+
+
+**响应数据类型**: `application/json`
+
+
+**接口描述**:
+
+本接口不返回 `detail` 字段值
+
+**请求参数**:
+
+
+| 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
+| -------- | -------- | ----- | -------- | -------- | ------ |
+|status|订单状态 0-交易中 1-已完成|query|true|int||
+|page|页码, 从0开始|query|false|int||
+|pageSize|每页记录数|query|false|int||
+
+
+**响应状态**:
+
+
+| 状态码 | 说明 | schema |
+| -------- | -------- | ----- | 
+|200|OK| |
+
+
+**响应参数**:
+
+
+| 参数名称 | 参数说明 | 类型 | schema |
+| -------- | -------- | ----- |----- | 
+|code||int|int|
+|msg||string||
+|data||object||
+|&emsp;&emsp;count|本页记录数|int||
+|&emsp;&emsp;total|总记录数|long||
+|&emsp;&emsp;page|页码,0开始|int||
+|&emsp;&emsp;pageSize|每页最大记录数|int||
+|&emsp;&emsp;list||array|ExchangeOrder|
+|&emsp;&emsp;&emsp;orderId||string||
+|&emsp;&emsp;&emsp;memberId|所属用户ID|integer||
+|&emsp;&emsp;&emsp;type|订单类型,可用值:MARKET_PRICE,LIMIT_PRICE|string||
+|&emsp;&emsp;&emsp;amount|数量|number||
+|&emsp;&emsp;&emsp;symbol|交易对|string||
+|&emsp;&emsp;&emsp;tradedAmount|已交易数量|number||
+|&emsp;&emsp;&emsp;turnover|总额|number||
+|&emsp;&emsp;&emsp;coinSymbol|币|string||
+|&emsp;&emsp;&emsp;baseSymbol|本位币|string||
+|&emsp;&emsp;&emsp;status|订单状态,可用值:TRADING,COMPLETED,CANCELED,OVERTIMED|string||
+|&emsp;&emsp;&emsp;direction|订单方向,可用值:BUY,SELL|string||
+|&emsp;&emsp;&emsp;price|价格|number||
+|&emsp;&emsp;&emsp;time|下单时间|integer||
+|&emsp;&emsp;&emsp;completedTime|完成时间|integer||
+|&emsp;&emsp;&emsp;canceledTime|取消时间|integer||
+|&emsp;&emsp;&emsp;useDiscount|折扣|string||
+|&emsp;&emsp;&emsp;detail|已成交列表|array||
+|&emsp;&emsp;&emsp;completed|是否完成,true:完成,false:未完成|boolean||
+
+
+**响应示例**:
+```javascript
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+		"count": 0,
+		"total": 0,
+		"page": 0,
+		"pageSize": 0,
+		"list": [
+			{
+				"orderId": "",
+				"memberId": 0,
+				"type": "",
+				"amount": 0,
+				"symbol": "",
+				"tradedAmount": 0,
+				"turnover": 0,
+				"coinSymbol": "",
+				"baseSymbol": "",
+				"status": "",
+				"direction": "",
+				"price": 0,
+				"time": 0,
+				"completedTime": 0,
+				"canceledTime": 0,
+				"useDiscount": "",
+				"detail": null,
+				"completed": true
+			}
+		]
+	}
+}
+```
+
+
+## 9.根据订单ID获取订单信息
+
+
+**接口地址**:`/spot/open-api/v1/exchange/order/{orderId}`
+
+
+**请求方式**:`GET`
+
+
+**响应数据类型**: `application/json`
+
+
+**接口描述**:
+
+此接口响应包含 `detail` 列表
+
+**请求参数**:
+
+
+| 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
+| -------- | -------- | ----- | -------- | -------- | ------ |
+|orderId|订单ID|path|true|string||
+
+
+**响应状态**:
+
+
+| 状态码 | 说明 | schema |
+| -------- | -------- | ----- | 
+|200|OK| |
+
+
+**响应参数**:
+
+
+| 参数名称 | 参数说明 | 类型 | schema |
+| -------- | -------- | ----- |----- | 
+|code||int|int|
+|msg||string||
+|data|| object | |
+|&emsp;&emsp;orderId|订单ID|string||
+|&emsp;&emsp;memberId|所属用户ID|long||
+|&emsp;&emsp;type|订单类型,可用值:MARKET_PRICE,LIMIT_PRICE|string||
+|&emsp;&emsp;amount|数量|number||
+|&emsp;&emsp;symbol|币对|string||
+|&emsp;&emsp;tradedAmount|已成交数量|number||
+|&emsp;&emsp;turnover|总额|number||
+|&emsp;&emsp;coinSymbol|币|string||
+|&emsp;&emsp;baseSymbol|本位币|string||
+|&emsp;&emsp;status|订单状态,可用值:TRADING,COMPLETED,CANCELED,OVERTIMED|string||
+|&emsp;&emsp;direction|订单方向,可用值:BUY,SELL|string||
+|&emsp;&emsp;price|价格|number||
+|&emsp;&emsp;time|下单时间|long||
+|&emsp;&emsp;completedTime|完成时间|long||
+|&emsp;&emsp;canceledTime|取消时间|long||
+|&emsp;&emsp;useDiscount|折扣|string||
+|&emsp;&emsp;detail|已成交列表|array|ExchangeOrderDetail|
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;id|成交ID|integer||
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;orderId|所属订单号|string||
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;price|成交价格|number||
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;amount|成交数量|number||
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;turnover|成交总额|number||
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;fee|手续费|number||
+|&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;time|成交时间|integer||
+|&emsp;&emsp;completed|是否完成, true:完成, false:未完成|boolean||
+
+
+**响应示例**:
+```javascript
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+		"orderId": "",
+		"memberId": 0,
+		"type": "",
+		"amount": 0,
+		"symbol": "",
+		"tradedAmount": 0,
+		"turnover": 0,
+		"coinSymbol": "",
+		"baseSymbol": "",
+		"status": "",
+		"direction": "",
+		"price": 0,
+		"time": 0,
+		"completedTime": 0,
+		"canceledTime": 0,
+		"useDiscount": "",
+		"detail": [
+			{
+				"id": 0,
+				"orderId": "",
+				"price": 0,
+				"amount": 0,
+				"turnover": 0,
+				"fee": 0,
+				"time": 0
+			}
+		],
+		"completed": true
+	}
+}
+```
+
+
+## 10.撤单
+
+
+**接口地址**:`/spot/open-api/v1/exchange/order/{orderId}`
+
+
+**请求方式**:`DELETE`
+
+
+**响应数据类型**: `application/json`
+
+
+**接口描述**:
+
+
+
+**请求参数**:
+
+
+| 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
+| -------- | -------- | ----- | -------- | -------- | ------ |
+|orderId|订单ID|path|true|string||
+
+
+**响应状态**:
+
+
+| 状态码 | 说明 | schema |
+| -------- | -------- | ----- | 
+|200|OK| |
+
+
+**响应参数**:
+
+
+| 参数名称 | 参数说明 | 类型 | schema |
+| -------- | -------- | ----- |----- | 
+|code||int|int|
+|msg||string||
+|data|true:撤单成功,false:处理失败|boolean||
+
+
+**响应示例**:
+```javascript
+{
+	"code": 0,
+	"msg": "",
+	"data": true
 }
 ```
