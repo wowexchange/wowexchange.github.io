@@ -3,7 +3,7 @@
 
 [中文文档](./README_zh.html),  [English API doc](./)
 
-## 1.通用说明
+## 1. 通用说明
 
 
 
@@ -36,7 +36,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 
 
 
-## 2.现货下单接口
+## 2. 现货下单接口
 
 
 **接口地址**: `/spot/open-api/v1/exchange/order`
@@ -118,7 +118,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 3.获取钱包账户列表
+## 3. 获取钱包账户列表
 
 
 **接口地址**: `/spot/open-api/v1/wallets`
@@ -201,7 +201,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 4.获取交易对最新价格
+## 4. 获取交易对最新价格
 
 
 **接口地址**: `/spot/open-api/v1/last-price/{symbol}`
@@ -258,7 +258,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 5.获取实时K线数据
+## 5. 获取实时K线数据
 
 
 **接口地址**: `/spot/open-api/v1/k-line/{symbol}/{interval}`
@@ -353,7 +353,93 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 6.获取交易对最新交易信息
+
+
+
+## 6. 获取历史K线
+
+
+**接口地址**:`/gateway-api/spot/open-api/v1/k-line/history/{symbol}/{interval}`
+
+
+**请求方式**:`GET`
+
+
+**请求数据类型**:`application/x-www-form-urlencoded`
+
+
+**响应数据类型**:`*/*`
+
+
+**接口描述**:
+
+
+**请求参数**:
+
+
+| 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
+| -------- | -------- | ----- | -------- | -------- | ------ |
+|symbol|交易对, 格式：BTC-USDT|path|true|string||
+|interval|K线间隔, 可用值: M1,M5,M15,M30,H1,H4,D1,W1,MON1|path|true|string||
+|endTime|最后一个数据时间,单位:秒(结果不包含此时间数据)|query|true|long||
+|limit|返回记录数量,默认100|query|true|int||
+
+
+**响应状态**:
+
+
+| 状态码 | 说明 | schema |
+| -------- | -------- | ----- | 
+|200|OK| |
+
+
+**响应参数**:
+
+
+| 参数名称 | 参数说明 | 类型 | schema |
+| -------- | -------- | ----- |----- | 
+|code||int|int|
+|msg||string||
+|data||object| |
+|&emsp;&emsp;klines|K线历史数据|array| |
+|&emsp;&emsp;&emsp;&emsp;close|结束价|number||
+|&emsp;&emsp;&emsp;&emsp;high|最高价|number||
+|&emsp;&emsp;&emsp;&emsp;low|最低价|number||
+|&emsp;&emsp;&emsp;&emsp;open|开始价|number||
+|&emsp;&emsp;&emsp;&emsp;time|k线时间,单位毫秒|string||
+|&emsp;&emsp;&emsp;&emsp;volume|成交量,交易对左边成交量|number||
+|&emsp;&emsp;&emsp;&emsp;vvolume|成交额,交易对右边成交量|number||
+
+
+**响应示例**:
+```javascript
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+		"klines": [
+			{
+				"close": 0,
+				"high": 0,
+				"low": 0,
+				"open": 0,
+				"time": "",
+				"volume": 0,
+				"vvolume": 0
+			}
+		]
+	}
+}
+```
+
+
+
+
+
+
+
+
+## 7. 获取交易对最新交易信息
 
 
 **接口地址**: `/spot/open-api/v1/exchange/{symbol}/recent-trades`
@@ -428,7 +514,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 7.获取实时盘口数据
+## 8. 获取实时盘口数据
 
 
 **接口地址**: `/spot/open-api/v1/exchange/{symbol}/partial`
@@ -514,7 +600,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 
 
 
-## 8.分页获取进行中的订单列表
+## 9. 分页获取进行中的订单列表
 
 
 **接口地址**: `/spot/open-api/v1/exchange/orders`
@@ -618,7 +704,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 9.根据订单ID获取订单信息
+## 10. 根据订单ID获取订单信息
 
 
 **接口地址**: `/spot/open-api/v1/exchange/order/{orderId}`
@@ -724,7 +810,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 ```
 
 
-## 10.撤单
+## 11. 撤单
 
 
 **接口地址**: `/spot/open-api/v1/exchange/order/{orderId}`

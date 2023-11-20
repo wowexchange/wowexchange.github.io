@@ -288,14 +288,14 @@ Obtain the real-time price of the specified Symbol, and the response 'data' of t
 |&emsp;&emsp;s|Symbol|string||
 |&emsp;&emsp;i|Interval|string||
 |&emsp;&emsp;dd||object| |
-|&emsp;&emsp;&emsp;&emsp;o|Start price|string||
-|&emsp;&emsp;&emsp;&emsp;h|High price|string||
-|&emsp;&emsp;&emsp;&emsp;l|Low price|string||
-|&emsp;&emsp;&emsp;&emsp;c|End price|string||
-|&emsp;&emsp;&emsp;&emsp;h24|High price of 24h|string||
-|&emsp;&emsp;&emsp;&emsp;l24|Low price of 24h|string||
-|&emsp;&emsp;&emsp;&emsp;v24|Trading volume in the past 24 hours|string||
-|&emsp;&emsp;&emsp;&emsp;vv24|Transaction volume in the past 24 hours|string||
+|&emsp;&emsp;&emsp;&emsp;o|opening price|string||
+|&emsp;&emsp;&emsp;&emsp;h|highest price|string||
+|&emsp;&emsp;&emsp;&emsp;l|lowest price|string||
+|&emsp;&emsp;&emsp;&emsp;c|closing price|string||
+|&emsp;&emsp;&emsp;&emsp;h24|highest price of 24h|string||
+|&emsp;&emsp;&emsp;&emsp;l24|lowest price of 24h|string||
+|&emsp;&emsp;&emsp;&emsp;v24|Symbol left volume in the past 24 hours|string||
+|&emsp;&emsp;&emsp;&emsp;vv24|Symbol right volume in the past 24 hours|string||
 |&emsp;&emsp;&emsp;&emsp;p24|24-hour price change ratio|string||
 |&emsp;&emsp;&emsp;&emsp;cp|24-hour price fluctuation volume|string||
 |&emsp;&emsp;&emsp;&emsp;v|Volume|string||
@@ -335,7 +335,91 @@ Obtain the real-time price of the specified Symbol, and the response 'data' of t
 ```
 
 
-## 6. Obtain the latest transaction information for transaction pairs
+
+
+
+
+## 6. Get Historical K-Line
+
+
+**Interface Address**:`/gateway-api/spot/open-api/v1/k-line/history/{symbol}/{interval}`
+
+
+**Request Method** :<code class="method_get">GET</code>
+
+
+**Response Content-Type** : `application/json`
+
+
+**Interface Description** : 
+
+
+
+**Request Parameters** : 
+
+|Parameter Name | Parameter Description | Request Type | Required | data Type | Schema|
+| -------- | -------- | ----- | -------- | -------- | ------ |
+|symbol | Symbol, format: BTC-USDT | path | true | string||
+|interval | K-line interval, available: M1, M5, M15, M30, H1, H4, D1, W1, MON1 | path | true | string||
+|endTime|Time of last data, in seconds (results do not include this time data)|query|true|long||
+|limit|Returns the number of records, default 100|query|true|int||
+
+
+**Response Status** : 
+
+
+|Status code | Description | Schema|
+| -------- | -------- | ----- | 
+|200|OK| |
+
+
+**Response parameters** : 
+
+
+|Parameter Name | Parameter Description | Type | Schema|
+| -------- | -------- | ----- |----- | 
+|code||int|int|
+|msg||string||
+|data||object| |
+|&emsp;&emsp;klines|K-Line Historical Data|array| |
+|&emsp;&emsp;&emsp;&emsp;close|closing price|number||
+|&emsp;&emsp;&emsp;&emsp;high|highest price|number||
+|&emsp;&emsp;&emsp;&emsp;low|lowest price|number||
+|&emsp;&emsp;&emsp;&emsp;open|opening price|number||
+|&emsp;&emsp;&emsp;&emsp;time|k-line time in milliseconds|string||
+|&emsp;&emsp;&emsp;&emsp;volume|symbol left volume|number||
+|&emsp;&emsp;&emsp;&emsp;vvolume|symbol right volume|number||
+
+
+**Response Example** :  
+```javascript
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+		"klines": [
+			{
+				"close": 0,
+				"high": 0,
+				"low": 0,
+				"open": 0,
+				"time": "",
+				"volume": 0,
+				"vvolume": 0
+			}
+		]
+	}
+}
+```
+
+
+
+
+
+
+
+
+## 7. Obtain the latest transaction information for transaction pairs
 
 **Interface Address** : `/spot/open-api/v1/exchange/{symbol}/recent-trades`
 
@@ -399,7 +483,7 @@ Obtain the real-time price of the specified Symbol, and the response 'data' of t
 ```
 
 
-## 7. Obtain real-time partial
+## 8. Obtain real-time partial
 
 
 **Interface Address** : `/spot/open-api/v1/exchange/{symbol}/partial`
@@ -479,7 +563,7 @@ Obtain buy and sell data for a specified Symbol, with a maximum number of 'depth
 
 
 
-## 8.Paging to get a list of orders in progress
+## 9. Paging to get a list of orders in progress
 
 
 **Interface Address**: `/spot/open-api/v1/exchange/orders`
@@ -584,7 +668,7 @@ This interface does not return the `detail` field value.
 ```
 
 
-## 9.Get order information based on order ID
+## 10. Get order information based on order ID
 
 
 **Interface Address**: `/spot/open-api/v1/exchange/order/{orderId}`
@@ -692,7 +776,7 @@ This interface response contains the `detail` list
 ```
 
 
-## 10. Cancel an order
+## 11. Cancel an order
 
 
 **Interface Address**: `/spot/open-api/v1/exchange/order/{orderId}`
