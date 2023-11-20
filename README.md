@@ -394,21 +394,21 @@ Obtain the real-time price of the specified Symbol, and the response 'data' of t
 **Response Example** :  
 ```javascript
 {
-	"code": 0,
-	"msg": "",
-	"data": {
-		"klines": [
-			{
-				"close": 0,
-				"high": 0,
-				"low": 0,
-				"open": 0,
-				"time": "",
-				"volume": 0,
-				"vvolume": 0
-			}
-		]
-	}
+    "code": 0,
+    "msg": "",
+    "data": {
+        "klines": [
+            {
+                "close": 0,
+                "high": 0,
+                "low": 0,
+                "open": 0,
+                "time": "",
+                "volume": 0,
+                "vvolume": 0
+            }
+        ]
+    }
 }
 ```
 

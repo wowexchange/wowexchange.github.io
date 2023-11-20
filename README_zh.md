@@ -414,21 +414,21 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 **响应示例**:
 ```javascript
 {
-	"code": 0,
-	"msg": "",
-	"data": {
-		"klines": [
-			{
-				"close": 0,
-				"high": 0,
-				"low": 0,
-				"open": 0,
-				"time": "",
-				"volume": 0,
-				"vvolume": 0
-			}
-		]
-	}
+    "code": 0,
+    "msg": "",
+    "data": {
+        "klines": [
+            {
+                "close": 0,
+                "high": 0,
+                "low": 0,
+                "open": 0,
+                "time": "",
+                "volume": 0,
+                "vvolume": 0
+            }
+        ]
+    }
 }
 ```
 
