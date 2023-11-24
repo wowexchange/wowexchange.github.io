@@ -560,7 +560,7 @@ curl -X GET -H  "Accept:*/*" -H  "token:S0N......6AJ" "https://wowexchange.xyz/g
 |msg||string||
 |data||object| |
 |&emsp;&emsp;s|交易对|string||
-|&emsp;&emsp;a|买盘|array| |
+|&emsp;&emsp;a|卖盘|array| |
 |&emsp;&emsp;&emsp;&emsp;p|价格|number||
 |&emsp;&emsp;&emsp;&emsp;a|数量|number||
 |&emsp;&emsp;&emsp;&emsp;t|总额|number||
